@@ -1,0 +1,17 @@
+# Blender
+*.blend1
+*.blend2
+
+# 构建产物
+dist/
+renders/
+
+# 安全工具
+.mimosa/
+
+# Python
+__pycache__/
+*.pyc
+
+# 系统
+.DS_Store

@@ -1,0 +1,36 @@
+schema_version = "1.0.0"
+
+# 买量工坊 UA Studio —— 休闲游戏买量广告一键式制作工具箱
+id = "ua_studio"
+version = "0.2.1"
+name = "买量工坊 UA Studio"
+tagline = "休闲游戏买量广告一键式制作：场景·材质·动画·物理·渲染全流程"
+maintainer = "houtao <houtao@example.com>"
+type = "add-on"
+
+blender_version_min = "4.5.0"
+
+license = [
+  "SPDX:GPL-3.0-or-later",
+]
+
+tags = [
+  "Animation",
+  "Lighting",
+  "Material",
+  "Physics",
+  "Render",
+  "Scene",
+]
+
+[permissions]
+network = "需要联网下载第三方前置插件"
+files = "读取导入的素材模型并写出渲染结果"
+
+[build]
+paths_exclude = [
+  "dist/",
+  "renders/",
+  "tests/",
+  "__pycache__/",
+]
