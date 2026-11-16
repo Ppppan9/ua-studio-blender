@@ -5,7 +5,7 @@ id = "ua_studio"
 version = "0.2.1"
 name = "买量工坊 UA Studio"
 tagline = "休闲游戏买量广告一键式制作：场景·材质·动画·物理·渲染全流程"
-maintainer = "houtao <houtao@example.com>"
+maintainer = "Ppppan9 <ppppan9@users.noreply.github.com>"
 type = "add-on"
 
 blender_version_min = "4.5.0"
