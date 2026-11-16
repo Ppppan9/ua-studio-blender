@@ -12,6 +12,7 @@ from . import (
     game_ops,
     shot_ops,
     quality_ops,
+    candy_ops,
 )
 
 classes = (
@@ -26,6 +27,7 @@ classes = (
     *game_ops.classes,
     *shot_ops.classes,
     *quality_ops.classes,
+    *candy_ops.classes,
 )
 
 registry = tuple(classes)  # 顶层 __init__ 遍历注册

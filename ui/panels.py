@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import bpy
 
-from ..core import deps, asset_lib, material_lib, template_lib
+from ..core import deps, asset_lib, material_lib, template_lib, candy_render
 
 
 class _UABase:
@@ -504,6 +504,51 @@ class UA_PT_shots(_UABase, bpy.types.Panel):
 # 占位面板（保留机制，新增模块时替换）
 # ---------------------------------------------------------------------------
 
+
+class UA_PT_candy(_UABase, bpy.types.Panel):
+    """🍬 糖果渲染：一键材质/圆角/灯光/背景/阵列/粒子。"""
+
+    bl_label = "🍬 糖果渲染"
+    bl_order = 11
+
+    def draw(self, context):
+        layout = self.layout
+        props = context.scene.uastudio
+
+        col = layout.column(align=True)
+        col.scale_y = 1.4
+        col.operator("ua.candy_scene", text="一键糖果场景", icon="SHADERBALL")
+
+        head = layout.row()
+        head.label(text="材质", icon="SHADERBALL")
+        col = layout.column(align=True)
+        col.operator("ua.candy_mats", text="一键糖果材质（六色循环）", icon="COLOR")
+        col.operator("ua.template_recolor", text="换主色", icon="COLOR")
+
+        head = layout.row()
+        head.label(text="几何", icon="MOD_BEVEL")
+        row = layout.row(align=True)
+        row.operator("ua.candy_bevel", text="批量圆角", icon="MOD_BEVEL")
+        row.operator("ua.candy_auto_bevel", text="智能圆角", icon="SNAP_MIDPOINT")
+
+        head = layout.row()
+        head.label(text="环境", icon="LIGHT_SUN")
+        col = layout.column(align=True)
+        col.scale_y = 1.3
+        col.operator("ua.candy_full_setup", text="一键糖果渲染环境", icon="LIGHT")
+        row = col.row(align=True)
+        row.operator("ua.candy_light", text="灯光", icon="LIGHT_AREA")
+        row.operator("ua.candy_backdrop", text="背景", icon="MATERIAL")
+        row.operator("ua.candy_render_settings", text="参数", icon="SETTINGS")
+
+        head = layout.row()
+        head.label(text="快速布景", icon="GRID")
+        row = layout.row(align=True)
+        row.operator("ua.candy_rain", text="糖果雨", icon="PARTICLES")
+        row.operator("ua.spline_array", text="沿曲线阵列", icon="MOD_ARRAY")
+
+
+
 _PLACEHOLDERS = ()
 
 
@@ -524,6 +569,6 @@ for _slug, _label, _note in _PLACEHOLDERS:
 classes = tuple(
     [UA_PT_deps, UA_PT_scene, UA_PT_assets, UA_PT_materials,
      UA_PT_animation, UA_PT_gameplay, UA_PT_physics, UA_PT_camera,
-     UA_PT_render, UA_PT_endcard, UA_PT_shots]
+     UA_PT_render, UA_PT_endcard, UA_PT_shots, UA_PT_candy]
     + [globals()[f"UA_PT_{s}"] for s, _, _ in _PLACEHOLDERS]
 )
